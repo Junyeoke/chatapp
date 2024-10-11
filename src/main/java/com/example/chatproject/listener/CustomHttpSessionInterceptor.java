@@ -14,17 +14,23 @@ public class CustomHttpSessionInterceptor extends HttpSessionHandshakeIntercepto
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response,
                                    WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
+        // 요청이 ServletServerHttpRequest의 인스턴스인지 확인
         if (request instanceof ServletServerHttpRequest) {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
-            HttpSession session = servletRequest.getServletRequest().getSession(false); // 세션이 없으면 null 반환
+            // 세션이 존재하는지 확인, 없으면 null 반환
+            HttpSession session = servletRequest.getServletRequest().getSession(false);
 
             if (session != null) {
+                // 세션이 존재하면 attributes 맵에 세션을 추가
                 attributes.put("HTTP_SESSION", session);
+                // 세션에 저장된 사용자 이름을 로그로 출력
                 System.out.println("HttpSession found: " + session.getAttribute("username"));
             } else {
+                // 세션이 존재하지 않으면 로그로 출력
                 System.out.println("HttpSession is null");
             }
         }
+        // 부모 클래스의 beforeHandshake 메서드 호출
         return super.beforeHandshake(request, response, wsHandler, attributes);
     }
 }

@@ -1,0 +1,7 @@
+
+–
+java:S2259("SA "NullPointerException" could be thrown; "getSessionAttributes()" can return null.(‹¾¾±8Ï£·Ì§2J$5ad7d864-a975-4a15-aeac-d6f24a9a3e69
+–
+java:S2259"SA "NullPointerException" could be thrown; "getSessionAttributes()" can return null.(‹¾¾±8Ï£·Ì§2J$9ac4d341-b050-4656-b8fc-15fd1f059610
+r	java:S106"+Replace this use of System.out by a logger.(ã°ÉÎùÿÿÿÿ8Ó£·Ì§2J$311868d4-a33f-434e-8d7b-1b34c7578fd9
+m	java:S106,"+Replace this use of System.out by a logger.(‹½µ“8Õ£·Ì§2J$7c8958ea-40ee-47ad-88cc-c974b2b8b237

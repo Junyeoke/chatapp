@@ -8,9 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/chat/**") // 웹소켓 엔드포인트 추가
-                .allowedOrigins("http://localhost:8080", "http://localhost:3000")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowCredentials(true);
+        // CORS 설정 추가
+        registry.addMapping("/chat/**") // "/chat/**" 경로에 대한 CORS 설정
+                .allowedOrigins("http://localhost:8080", "http://localhost:3000") // 허용할 출처
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메서드
+                .allowCredentials(true); // 자격 증명(쿠키, 인증 헤더 등) 허용
     }
 }
