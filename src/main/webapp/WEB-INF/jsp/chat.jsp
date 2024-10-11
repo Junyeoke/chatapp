@@ -8,11 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Room</title>
     <style>
-        /* 기존 스타일 유지 */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 900px;
         }
 
         #chat {
@@ -74,7 +86,6 @@
             border-top-left-radius: 10px;
         }
 
-        /* 시스템 메시지 스타일 */
         .system-message {
             display: flex;
             justify-content: center;
@@ -82,8 +93,8 @@
         }
 
         .system-message .content {
-            background-color: #ffdddd; /* 밝은 빨간색 배경 */
-            color: red; /* 빨간색 글자 */
+            background-color: #ffdddd;
+            color: red;
             padding: 10px;
             border-radius: 10px;
             max-width: 70%;
@@ -117,9 +128,8 @@
             background-color: #005fcb;
         }
 
-        /* 사용자 목록 스타일 */
         #userList {
-            max-width: 200px;
+            width: 300px;
             background-color: #fff;
             border: 1px solid #ccc;
             padding: 10px;
@@ -149,22 +159,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
-<h2>안녕하세요, <span id="username"><%= request.getParameter("username") %></span>님</h2>
-<div style="display: flex;">
-    <div id="chat">
-        <!-- 채팅 메시지들이 표시되는 부분 -->
+<div class="container">
+    <h2>안녕하세요, <span id="username"><%= request.getParameter("username") %></span>님</h2>
+    <div style="display: flex;">
+        <div id="chat">
+            <!-- 채팅 메시지들이 표시되는 부분 -->
+        </div>
+        <div id="userList">
+            <h3>접속자</h3>
+            <ul id="users">
+                <!-- 사용자 목록이 여기에 표시됨 -->
+            </ul>
+        </div>
     </div>
-    <div id="userList">
-        <h3>Users Online</h3>
-        <ul id="users">
-            <!-- 사용자 목록이 여기에 표시됨 -->
-        </ul>
-    </div>
-</div>
 
-<input type="text" id="messageInput" placeholder="Type your message...">
-<button onclick="sendMessage()">Send</button>
-<button onclick="leaveChat()">Leave Chat</button> <!-- 나가기 버튼 추가 -->
+    <input type="text" id="messageInput" placeholder="메시지를 입력하세요 :)">
+    <button onclick="sendMessage()">보내기</button>
+    <button onclick="leaveChat()">채팅방 나가기</button> <!-- 나가기 버튼 추가 -->
+</div>
 
 <script>
     var username = document.getElementById('username').textContent;
