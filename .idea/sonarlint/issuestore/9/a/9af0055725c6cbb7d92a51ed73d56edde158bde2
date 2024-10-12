@@ -1,10 +1,15 @@
 
-	java:S112&"FDefine and throw a dedicated exception instead of using a generic one.(½¹ú¿ÿÿÿÿÿ8³Ö²Ì§2J$b5ad6868-3bf9-4a9e-9dcd-60d07c77f18c
+r
+java:S1192>"PDefine a constant instead of duplicating this literal "/topic/messages" 4 times.(Ü½ÎÎúÿÿÿÿ8£ˆŸ„¨2
+d
+java:S1192<"GDefine a constant instead of duplicating this literal "system" 4 times.(¬ªÑ¶8¤ˆŸ„¨2
+e
+java:S1192="HDefine a constant instead of duplicating this literal "message" 4 times.(À¾Øı8¤ˆŸ„¨2
+
+java:S11928"MDefine a constant instead of duplicating this literal "/topic/users" 3 times.(•”¤İ8€â‘„¨2J$af39c95c-5ec8-407f-b588-074d94c6c59e
 ‘
-java:S1192!"IDefine a constant instead of duplicating this literal "username" 3 times.(ƒÃ“ıøÿÿÿÿ8´Ö²Ì§2J$7e678200-9f62-4890-8cd0-5a5d4eab823a
-´
-java:S1130&"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(½¹ú¿ÿÿÿÿÿ8·Ö²Ì§2J$7fd03de3-42e4-4ed0-87be-f934802e0aa8
-r	java:S106-"+Replace this use of System.out by a logger.(àçúÿÿÿÿ8¸Ö²Ì§2J$10d119c1-4ad6-4a39-8181-4249f658470a
-r	java:S1062"+Replace this use of System.out by a logger.(™Å‘Ÿüÿÿÿÿ8»Ö²Ì§2J$911837ea-fb21-47f4-ba16-e72be64dc96f
+java:S1192&"IDefine a constant instead of duplicating this literal "username" 5 times.(ƒÃ“ıøÿÿÿÿ8Ìõ¯‚¨2J$dc1b9343-cfc6-4d29-b28c-7401f0cc0bce
+r	java:S1064"+Replace this use of System.out by a logger.(¶Ñúçúÿÿÿÿ8Õõ¯‚¨2J$2791e857-da86-4f3e-b4f2-3900fff8a572
+L	java:S106F"+Replace this use of System.out by a logger.(š¤Âİşÿÿÿÿ8¬ˆŸ„¨2
 „
-java:S1128"HRemove this unused import 'com.example.chatproject.service.UserService'.(İç„ëJ$82c0f601-d637-4b65-9827-14dcad947644
+java:S1128"HRemove this unused import 'com.example.chatproject.service.UserService'.(İç„ëJ$904e12b0-8188-46d1-912a-d84f81b4ed95

@@ -21,3 +21,11 @@ Dsrc/main/java/com/example/chatproject/controller/ChatController.java,9/a/9af00
 Psrc/main/java/com/example/chatproject/listener/CustomHttpSessionInterceptor.java,1/1/11e498a08b4ce94a7ce56d10b4c535d3745aa4e6
 z
 Jsrc/main/java/com/example/chatproject/listener/WebSocketEventListener.java,9/3/9304e0238df843119db525f7493ff795ceaa9f64
+h
+8src/main/java/com/example/chatproject/model/Message.java,9/d/9d20274cc746139079583a4fe570cd87dfedc51f
+e
+5src/main/java/com/example/chatproject/model/User.java,9/d/9d5736a8f1d5e50a73d9bbcc1fa5f078538097cc
+w
+Gsrc/main/java/com/example/chatproject/repository/MessageRepository.java,3/c/3c76102fa83b328598632fa9fb15e4585e41f6d9
+t
+Dsrc/main/java/com/example/chatproject/repository/UserRepository.java,5/9/598be2f408dcf6d0f627df356981b011959fbcee
