@@ -226,19 +226,62 @@
 
         .emoji-picker {
             position: absolute;
-            bottom: 60px;
+            bottom: 70px;
             right: 10px;
             background-color: white;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 10px;
             display: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .emoji-picker::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .emoji-picker::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 3px;
+        }
+
+        .emoji-picker::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
         }
 
         .emoji-picker span {
             cursor: pointer;
+            font-size: 24px;
+            margin: 5px;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .emoji-picker span:hover {
+            transform: scale(1.2);
+        }
+
+        .emoji-categories {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .emoji-category {
+            cursor: pointer;
             font-size: 20px;
-            margin: 2px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .emoji-category:hover, .emoji-category.active {
+            background-color: #f0f0f0;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
@@ -426,19 +469,51 @@
         const emojiPicker = document.getElementById('emojiPicker');
         const messageInput = document.getElementById('messageInput');
 
-        // 이모지 목록
-        const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕'];
+        // 이모지 카테고리와 해당 이모지들
+        const emojiCategories = {
+            '😀': ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇'],
+            '🥰': ['🥰', '😍', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜'],
+            '🤔': ['🤔', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞'],
+            '😢': ['😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶'],
+            '🐶': ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯']
+        };
 
-        // 이모지 선택기에 이모지 추가
-        emojis.forEach(emoji => {
-            const emojiSpan = document.createElement('span');
-            emojiSpan.textContent = emoji;
-            emojiSpan.onclick = () => {
-                messageInput.value += emoji;
-                messageInput.focus();
-            };
-            emojiPicker.appendChild(emojiSpan);
+        // 이모지 카테고리 버튼 생성
+        const categoryContainer = document.createElement('div');
+        categoryContainer.className = 'emoji-categories';
+        Object.keys(emojiCategories).forEach(category => {
+            const categoryButton = document.createElement('span');
+            categoryButton.className = 'emoji-category';
+            categoryButton.textContent = category;
+            categoryButton.onclick = () => showEmojiCategory(category);
+            categoryContainer.appendChild(categoryButton);
         });
+        emojiPicker.appendChild(categoryContainer);
+
+        // 이모지 컨테이너
+        const emojiContainer = document.createElement('div');
+        emojiPicker.appendChild(emojiContainer);
+
+        function showEmojiCategory(category) {
+            emojiContainer.innerHTML = '';
+            emojiCategories[category].forEach(emoji => {
+                const emojiSpan = document.createElement('span');
+                emojiSpan.textContent = emoji;
+                emojiSpan.onclick = () => {
+                    messageInput.value += emoji;
+                    messageInput.focus();
+                };
+                emojiContainer.appendChild(emojiSpan);
+            });
+
+            // 활성 카테고리 표시
+            document.querySelectorAll('.emoji-category').forEach(el => {
+                el.classList.toggle('active', el.textContent === category);
+            });
+        }
+
+        // 초기 카테고리 표시
+        showEmojiCategory('😀');
 
         // 이모지 버튼 클릭 이벤트
         emojiButton.onclick = (event) => {
